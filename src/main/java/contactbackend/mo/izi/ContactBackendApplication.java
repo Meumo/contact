@@ -11,11 +11,12 @@ import contactbackend.mo.izi.entities.Contact;
 import net.bytebuddy.utility.RandomString;
 
 @SpringBootApplication
-public class ContactBackendApplication implements CommandLineRunner{
+public class ContactBackendApplication implements CommandLineRunner {
 	@Autowired
-ContactRepository contactRepository;
+	ContactRepository contactRepository;
 	@Autowired
 	RepositoryRestConfiguration configuration;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ContactBackendApplication.class, args);
 	}
@@ -24,9 +25,10 @@ ContactRepository contactRepository;
 	public void run(String... args) throws Exception {
 		configuration.exposeIdsFor(Contact.class);
 		for (int i = 0; i < 10; i++) {
-			contactRepository.save(new Contact(null,RandomString.make(15),RandomString.make(17),RandomString.make(17),RandomString.make(17),"unknown.png"));
+			contactRepository.save(new Contact(null, RandomString.make(15), RandomString.make(17),
+					RandomString.make(17), RandomString.make(17), "unknown.png"));
 		}
-		
+
 	}
 
 }
